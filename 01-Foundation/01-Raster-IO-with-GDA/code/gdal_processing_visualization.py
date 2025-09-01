@@ -20,7 +20,7 @@ true_color_image = true_color_image / np.max(true_color_image)
 #plt.show()
 
 # 保存图像
-#plt.imsave(r'Remote-Sensing-Learning-Journey\01-Foundation\01-Raster-IO-with-GDAL\results\true_color_image.png', true_color_image)
+#plt.imsave(r'Remote-Sensing-Learning-Journey\01-Foundation\01-Raster-IO-with-GDAL\rawresults\true_color_image.png', true_color_image)
 
 # 读取近红外波段
 nir_band = gdal.Open(raster_path.format(5)).ReadAsArray()
@@ -38,4 +38,4 @@ plt.title('NDVI Image')
 plt.show()  
 
 # 保存NDVI图像
-plt.imsave(r'Remote-Sensing-Learning-Journey\01-Foundation\01-Raster-IO-with-GDAL\results\ndvi_image.png', ndvi, cmap='RdYlGn', vmin=-1, vmax=1)
+plt.imsave(r'Remote-Sensing-Learning-Journey\01-Foundation\01-Raster-IO-with-GDAL\rawresults\ndvi_image.png', ndvi, cmap='RdYlGn', vmin=-1, vmax=1)
