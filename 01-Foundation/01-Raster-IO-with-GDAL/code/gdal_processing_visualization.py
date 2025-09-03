@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 读取红绿蓝波段
-raster_path = r"Remote-Sensing-Learning-Journey\01-Foundation\01-Raster-IO-with-GDAL\data\LC09_L1TP_121040_20250827_20250828_02_T1\LC09_L1TP_121040_20250827_20250828_02_T1_B{}.TIF"
+raster_path = r"Remote-Sensing-Learning-Journey\01-Foundationdata\LC09_L1TP_121040_20250827_20250828_02_T1\LC09_L1TP_121040_20250827_20250828_02_T1_B{}.TIF"
 red_band = gdal.Open(raster_path.format(4)).ReadAsArray()
 red_band = red_band.astype(float)
 green_band = gdal.Open(raster_path.format(3)).ReadAsArray()
