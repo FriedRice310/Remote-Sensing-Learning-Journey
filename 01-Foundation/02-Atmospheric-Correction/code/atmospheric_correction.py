@@ -89,7 +89,7 @@ def get_reflectance(dn, band_number, Lmin):
     radiance = RADIANCE_MULT_BAND * dn + RADIANCE_ADD_BAND
     d = 1.0
     theta_s = np.radians(90 - SUN_ELEVATION)
-    reflectance = (np.pi * (radiance - 0) * d**2) / (ESUN[band_number] * np.cos(theta_s))
+    reflectance = (np.pi * (radiance - Lmin) * d**2) / (ESUN[band_number] * np.cos(theta_s))
     reflectance = np.clip(reflectance, 0, 1)
     return reflectance
 
