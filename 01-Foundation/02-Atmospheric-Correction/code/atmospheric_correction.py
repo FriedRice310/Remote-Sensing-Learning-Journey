@@ -89,7 +89,7 @@ def get_reflectance(dn, band_number, Lmin):
     radiance = RADIANCE_MULT_BAND * dn + RADIANCE_ADD_BAND
     d = 1.0
     theta_s = np.radians(90 - SUN_ELEVATION)
-    reflectance = (np.pi * (radiance - Lmin) * d**2) / (ESUN[band_number] * np.cos(theta_s))
+    reflectance = (np.pi * (radiance - 0) * d**2) / (ESUN[band_number] * np.cos(theta_s))
     reflectance = np.clip(reflectance, 0, 1)
     return reflectance
 
@@ -104,7 +104,28 @@ def plot_true_color_image(red, green, blue):
     plt.axis('off')
     plt.show()
 
+# 校正后数据保存
+def save_tif(band, band_number):
+    band_ = gdal.Open(r"Remote-Sensing-Learning-Journey\01-Foundation\data\LC09_L1TP_121040_20250827_20250828_02_T1\LC09_L1TP_121040_20250827_20250828_02_T1_B4.TIF")
+    band_ref = get_reflectance(band, band_number, Lmin= get_Lmin(band))
+    driver = gdal.GetDriverByName('GTiff')
+    out_band = driver.Create(
+        r"Remote-Sensing-Learning-Journey\01-Foundation\Post-processing data\B{}_ref.tif".format(band_number),
+        band_.RasterXSize,
+        band_.RasterYSize,
+        1,
+        gdal.GDT_Float32
+    )
+    out_band.SetGeoTransform(band_.GetGeoTransform())
+    out_band.SetProjection(band_.GetProjection())
+    out_band.GetRasterBand(1).WriteArray(band_ref)
+    out_band.FlushCache()
+    out_band = None
+    
 
 if __name__ == "__main__":
     extract_mult_and_add(MTL_path)
-    plot_true_color_image(red_band, green_band, blue_band)
+    save_tif(red_band, 4)
+    save_tif(green_band, 3)
+    save_tif(blue_band, 2)
+    save_tif(nir_band, 5)
