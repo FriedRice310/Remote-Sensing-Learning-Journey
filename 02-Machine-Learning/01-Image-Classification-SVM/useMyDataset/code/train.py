@@ -8,8 +8,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn import metrics
 import joblib
 
-band_path = r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\MyDataset\dataset\images\data.tif"
-label_path = r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\MyDataset\dataset\labels\labels.tif"
+band_path = r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\useMyDataset\dataset\images\data.tif"
+label_path = r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\useMyDataset\dataset\labels\labels.tif"
 X = gdal.Open(band_path).ReadAsArray().astype(np.float32)
 X_transpose = np.transpose(X,(1, 2, 0))
 y = gdal.Open(label_path).ReadAsArray().astype(np.float32)
@@ -50,4 +50,4 @@ print(classification_report(y_test, y_pred))
 confusion_matrix=metrics.confusion_matrix(y_test, y_pred)
 print(confusion_matrix)
 
-joblib.dump(svm_model, r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\MyDataset\model\svm.pkl")
+joblib.dump(svm_model, r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\useMyDataset\model\svm.pkl")

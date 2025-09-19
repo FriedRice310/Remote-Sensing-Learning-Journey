@@ -25,6 +25,8 @@ E --> F[深度学习应用]
    - [01-Raster-IO-with-GDAL](#01-raster-io-with-gdal)
    - [02-Raster-Processing-with-GDAL](#02-raster-processing-with-gdal)
    - [03-NDVI-Calculation](#03-ndvi-calculation)
+2. [02-Machine-Learning](#02-machine-learning)
+   - [01-Image-Classification-SVM](#01-image-classification-svm)
 
 ---
 
@@ -82,6 +84,34 @@ E --> F[深度学习应用]
 | 大气校正前（表观反射率） | 大气校正后（地表反射率） |
 |:------------:|:------------:|
 |![校正前](01-Foundation/01-Raster-IO-with-GDAL/rough_thumbnail/NDVI%20Image.png) |![校正后](01-Foundation/03-NDVI-Calculation/rough_thumbnail/NDVI%20Image.png) |
+
+---
+
+## 02-Machine-Learning
+
+### 01-Image-Classification-SVM
+
+**目标：** 学习使用qgis等工具学习样本标注和构建数据集，并通过训练svm完成分类任务
+
+**结果与讨论：**
+
+- 由于原始图像的分辨率较低和标注的准确率较低，模型效果不佳，考虑使用公开数据集进行训练
+
+- | class | precision | recall | f1-score | support |
+   |:------------:|:------------:|:------------:|:------------:|:------------:|
+   | 0.0（水体） | 0.91 | 0.90 | 0.91 | 1273 |
+   | 1.0（森林） | 0.94 | 0.98 | 0.96 | 934 |
+   | 2.0（农田） | 0.70 | 0.79 | 0.74 | 540 |
+   | 3.0（房屋） | 0.71 | 0.71 | 0.71 | 170 |
+   | 4.0（裸地） | 0.54 | 0.31 | 0.39 | 158 |
+   | 5.0（湿地） | 0.79 | 0.71 | 0.75 | 266 |
+   | accuracy | | | 0.85 | 3341 |
+   | macro avg | 0.77 | 0.73 | 0.74 | 3341 |
+   | weighted avg | 0.85 | 0.85 | 0.85 | 3341 |
+
+   | 原始图像 | 分类图像 |
+   |:------------:|:------------:|
+   |![原始图像](02-Machine-Learning/01-Image-Classification-SVM/useMyDataset/rough_thumbnail/Original%20image.png)|![分类图像](02-Machine-Learning/01-Image-Classification-SVM/useMyDataset/rough_thumbnail/Partial%20classification.png)|
 
 ---
 
