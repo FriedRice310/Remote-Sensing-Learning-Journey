@@ -7,3 +7,10 @@ ENV/
 data/
 rawresults/
 Post-processing data/
+outdata/
+test/
+cropdata/
+tool/
+model/
+temporary/
+dataset/
