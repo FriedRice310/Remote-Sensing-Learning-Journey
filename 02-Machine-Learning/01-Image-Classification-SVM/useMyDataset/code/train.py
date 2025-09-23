@@ -9,7 +9,7 @@ from sklearn import metrics
 import joblib
 
 band_path = r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\useMyDataset\dataset\images\data.tif"
-label_path = r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\useMyDataset\dataset\labels\labels.tif"
+label_path = r"Remote-Sensing-Learning-Journey\02-Machine-Learning\01-Image-Classification-SVM\useMyDataset\dataset\labels\labels2.tif"
 X = gdal.Open(band_path).ReadAsArray().astype(np.float32)
 X_transpose = np.transpose(X,(1, 2, 0))
 y = gdal.Open(label_path).ReadAsArray().astype(np.float32)
@@ -26,12 +26,12 @@ print(f"各类别样本数量: {np.bincount(y_labeled.astype(np.int64))}")
 scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X_labeled)
 
-X_scaled_, a, y_labeled_, a, = train_test_split(
-    X_scaled, y_labeled, train_size=0.01, random_state=42, stratify=y_labeled
-)
+# X_scaled_, a, y_labeled_, a, = train_test_split(
+#     X_scaled, y_labeled, train_size=0.01, random_state=42, stratify=y_labeled
+# )
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X_scaled_, y_labeled_, test_size=0.2, random_state=42, stratify=y_labeled_,
+    X_scaled, y_labeled, test_size=0.2, random_state=42, stratify=y_labeled,
 )
 
 
