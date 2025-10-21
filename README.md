@@ -27,6 +27,8 @@ E --> F[深度学习应用]
    - [03-NDVI-Calculation](#03-ndvi-calculation)
 2. [02-Machine-Learning](#02-machine-learning)
    - [01-Image-Classification-SVM](#01-image-classification-svm)
+3. [03-Deep-Learning](#03-deep-learning)
+   - [01-UNet-Building-Extraction](#01-unet-building-extraction)
 
 ---
 
@@ -111,9 +113,29 @@ E --> F[深度学习应用]
    | macro avg | 0.85 | 0.83 | 0.83 | 5241 |
    | weighted avg | 0.92 | 0.90 | 0.91 | 5241 |
 
-   | 原始图像 | 分类图像 |
-   |:------------:|:------------:|
-   |![原始图像](02-Machine-Learning/01-Image-Classification-SVM/useMyDataset/rough_thumbnail/Original%20image.png)|![分类图像](02-Machine-Learning/01-Image-Classification-SVM/useMyDataset/rough_thumbnail/Partial%20classification.png)|
+| 原始图像 | 分类图像 |
+|:------------:|:------------:|
+|![原始图像](02-Machine-Learning/01-Image-Classification-SVM/useMyDataset/rough_thumbnail/Original%20image.png)|![分类图像](02-Machine-Learning/01-Image-Classification-SVM/useMyDataset/rough_thumbnail/Partial%20classification.png)|
+
+---
+
+## 03-Deep-Learning
+
+### 01-UNet-Building-Extraction
+
+**目标：** 学习UNet模型并训练使用UNet模型进行建筑物识别
+
+**结果与讨论：**
+
+- 由于原数据分辨率较低，接下来的项目将通过[dd-ml-segmentation-benchmark](https://github.com/dronedeploy/dd-ml-segmentation-benchmark)的数据集进行
+
+| 训练过程 |
+|:------------:|
+| ![训练过程](03-Deep-Learning/01-UNet-Building-Extraction/out/training_curves.png) |
+
+| 推理效果 |
+|:------------:|
+| ![推理效果](03-Deep-Learning/01-UNet-Building-Extraction/out/prediction_results.png) |
 
 ---
 
